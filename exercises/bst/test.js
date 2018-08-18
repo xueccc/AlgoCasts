@@ -25,7 +25,7 @@ test('Contains returns node with the same data', () => {
   node.insert(3);
 
   const three = node.left.left.right;
-  expect(node.contains(3)).toEqual(three);
+  expect(node.contains(3)).toEqual(3);
 });
 
 test('Contains returns null if value not found', () => {
