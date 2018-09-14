@@ -6,22 +6,23 @@
 // the parent
 
 function validate(node, min = null, max = null) {
-  if (min === null && max === null) {
-    if (min === null && node.left) {
-      return validate(node.left, null, node.data)
-    }
-    if (max === null && node.right) {
-      return validate(node.right, node.data, null)
-    }
-  }else if (node.data < node.left || node.data > min) {
+  if (max !== null && node.data > max) {
     return false;
-  }else if (node.data > node.left.data && node.data) {
-    return validate(node.left, min, node.data)
-  } else if (node.data < node.right.data) {
-    return validate(node.right, node.data, max)
-  } else {
-    return true;
   }
+
+  if (min !== null && node.data < min) {
+    return false;
+  }
+
+  if (node.left && !validate(node.left, min, node.data)){
+    return false;
+  }
+
+  if (node.right && !validate(node.right, node.data, max)){
+    return false;
+  }
+
+  return true;
 }
 
 //recursion
