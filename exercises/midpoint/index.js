@@ -12,6 +12,22 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+//i: linkedList
+//o: mid point node
+//e: less then 2 nodes
+//c: n/a
+
+//1 2 3 4 5 6
+
+function midpoint(list) {
+  var slow = list.getFirst();
+  var fast = list.getFirst();
+
+  while (fast.next && fast.next.next){
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+}
 
 module.exports = midpoint;
